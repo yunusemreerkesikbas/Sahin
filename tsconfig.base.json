@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "paths": {
+      "@sahin/db": ["./packages/db/src/index.ts"],
+      "@sahin/db/*": ["./packages/db/src/*"],
+      "@sahin/shared": ["./packages/shared/src/index.ts"],
+      "@sahin/shared/*": ["./packages/shared/src/*"],
+      "@sahin/llm": ["./packages/llm/src/index.ts"],
+      "@sahin/llm/*": ["./packages/llm/src/*"],
+      "@sahin/scoring": ["./packages/scoring/src/index.ts"],
+      "@sahin/scoring/*": ["./packages/scoring/src/*"],
+      "@sahin/filters": ["./packages/filters/src/index.ts"],
+      "@sahin/filters/*": ["./packages/filters/src/*"],
+      "@sahin/scrapers": ["./packages/scrapers/src/index.ts"],
+      "@sahin/scrapers/*": ["./packages/scrapers/src/*"],
+      "@sahin/notifier": ["./packages/notifier/src/index.ts"],
+      "@sahin/notifier/*": ["./packages/notifier/src/*"]
+    }
+  }
+}

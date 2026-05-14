@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --version)",
+      "Bash(docker --version)",
+      "Bash(npm *)",
+      "Bash(corepack enable *)",
+      "PowerShell(pnpm *)",
+      "PowerShell($env:CI = \"1\"; & \"node_modules/.bin/tsc.cmd\" --noEmit -p apps/web/tsconfig.json 2>&1 | Select-Object -Last 80)",
+      "PowerShell(& \"node_modules/.bin/tsc.cmd\" --noEmit -p apps/web/tsconfig.json 2>&1 | Select-Object -Last 80)",
+      "PowerShell(& \"node_modules/.bin/tsc.cmd\" --noEmit -p apps/worker/tsconfig.json 2>&1 | Select-Object -Last 30)",
+      "PowerShell(& \"node_modules/.bin/tsc.cmd\" --noEmit -p apps/worker/tsconfig.json 2>&1 | Select-Object -Last 40)",
+      "PowerShell($configs = @\\(\"packages/shared\", \"packages/db\", \"packages/llm\", \"packages/scoring\", \"packages/filters\", \"packages/scrapers\", \"packages/notifier\", \"apps/worker\", \"apps/web\"\\); foreach \\($c in $configs\\) { Write-Output \"==== $c ====\"; & \"node_modules/.bin/tsc.cmd\" --noEmit -p \"$c/tsconfig.json\"; if \\($LASTEXITCODE -ne 0\\) { Write-Output \"FAILED: $c \\(exit $LASTEXITCODE\\)\" } else { Write-Output \"OK: $c\" } })",
+      "PowerShell($configs = @\\(\"packages/shared\", \"packages/db\"\\); foreach \\($c in $configs\\) { Write-Output \"==== $c ====\"; & \"node_modules/.bin/tsc.cmd\" --noEmit -p \"$c/tsconfig.json\"; if \\($LASTEXITCODE -ne 0\\) { Write-Output \"FAILED: $c \\(exit $LASTEXITCODE\\)\" } else { Write-Output \"OK: $c\" } })",
+      "PowerShell($configs = @\\(\"packages/shared\", \"packages/db\", \"packages/llm\", \"packages/scoring\", \"packages/filters\", \"packages/scrapers\", \"packages/notifier\", \"apps/worker\", \"apps/web\"\\); $fail = 0; foreach \\($c in $configs\\) { & \"node_modules/.bin/tsc.cmd\" --noEmit -p \"$c/tsconfig.json\"; if \\($LASTEXITCODE -ne 0\\) { Write-Output \"FAILED: $c\"; $fail++ } else { Write-Output \"OK: $c\" } }; Write-Output \"---\"; Write-Output \"failures: $fail\")"
+    ]
+  }
+}
